@@ -1,0 +1,242 @@
+<?php
+
+
+ob_start(); // ensures anything dumped out will be caught
+
+if (!empty($_GET['id'])){
+
+	$idnum = filter_var($_GET['id'], FILTER_SANITIZE_STRING);}
+
+if (!empty($_GET['rft_issn'])){
+
+	$issn = filter_var($_GET['rft_issn'], FILTER_SANITIZE_STRING);}
+
+if (!empty($_GET['rft_isbn'])){
+
+	$isbn = filter_var($_GET['rft_isbn'], FILTER_SANITIZE_STRING);}
+
+if (!empty($_GET['rft_volume'])){
+	
+	$vol = filter_var($_GET['rft_volume'], FILTER_SANITIZE_STRING);}
+
+if (!empty($_GET['rft_month'])){
+		
+	$month = filter_var($_GET['rft_month'], FILTER_SANITIZE_STRING);}
+
+if (!empty($_GET['rft_genre'])){
+			
+	$type = filter_var($_GET['rft_genre'], FILTER_SANITIZE_STRING);}
+
+if (!empty($_GET['rft_auinit'])){
+	$auinit = filter_var($_GET['rft_auinit'], FILTER_SANITIZE_STRING);}
+
+if (!empty($_GET['rft_pub'])){
+					
+	$pub = filter_var(urldecode($_GET['rft_pub']), FILTER_SANITIZE_STRING);}
+
+if (!empty($_GET['rft_issue'])){
+
+	$issue = filter_var(urldecode($_GET['rft_issue']), FILTER_SANITIZE_STRING);}
+
+if (!empty($_GET['rft_place'])){
+
+	$place = filter_var(urldecode($_GET['rft_place']), FILTER_SANITIZE_STRING);}
+
+if (!empty($_GET['rft_title'])){
+	
+	$title = filter_var($_GET['rft.title'], FILTER_SANITIZE_STRING);}
+
+if (!empty($_GET['rft_btitile'])){
+		
+	$btitle = filter_var($_GET['rft_btitle'], FILTER_SANITIZE_STRING);}
+
+if (!empty($_GET['rft_jtitle'])){
+			
+	$jtitle = filter_var($_GET['rft_jtitle'], FILTER_SANITIZE_STRING);}
+				
+if (!empty($_GET['rft_stitle'])){
+
+	$stitle = filter_var($_GET['rft_stitle'], FILTER_SANITIZE_STRING);}
+					
+if (!empty($_GET['rft_aufirst'])){
+
+	$auth = filter_var($_GET['rft_aufirst'], FILTER_SANITIZE_STRING);}
+						
+if (!empty($_GET['rft_atitle'])){
+
+	$arttitle = filter_var(urldecode($_GET['rft_atitle']), FILTER_SANITIZE_STRING);}
+							
+if (!empty($_GET['rft_date'])){
+
+	$date = filter_var($_GET['rft_date'], FILTER_SANITIZE_STRING);}
+
+
+$rawmessage="";
+
+if (isset($arttitle)){
+
+			$rawmessage=  $rawmessage . "<strong>Article Title:</strong> " . $arttitle . "\r\n";}
+
+
+
+if (isset($title)){
+
+			$rawmessage=  $rawmessage . "<strong>Title:</strong> " . $title . "\r\n";}
+
+
+	if (isset($btitle)){
+		
+	$rawmessage=$rawmessage . "<strong>Book Title:</strong> " . $btitle . "\r\n";}
+
+
+if (isset($jtitle)){
+		
+	$rawmessage=$rawmessage . "<strong>Journal Title:</strong> " . $jtitle . "\r\n";}
+
+	
+if (isset($stitle)){
+		
+	$rawmessage=$rawmessage . "<strong>Abbreviated Journal Title:</strong> " . $stitle . "\r\n";}
+
+	
+
+	
+if (isset($rttitle)){
+		
+	$rawmessage=$rawmessage . "<strong>Article Title:</strong> " . urldecode($arttitle) . "\r\n";}
+
+
+if (isset($auinit)){
+		
+	$rawmessage=$rawmessage . "<strong>Author First Name:</strong> " . $auinit . "\r\n";}
+
+	
+	
+if (isset($auth)){
+		
+	$rawmessage=$rawmessage . "<strong>Author Last Name:</strong> " . $auth . "\r\n";}
+
+
+if (isset($date)){
+		
+	$rawmessage=$rawmessage . "<strong>Date:</strong> " . $date . "\r\n";}
+
+if (isset($vol)){
+		
+	$rawmessage=$rawmessage . "<strong>Volume:</strong> " . $vol . "\r\n";}
+
+if (isset($issue)){
+		
+	$rawmessage=$rawmessage . "<strong>Issue:</strong> " . $issue . "\r\n";}
+
+if (isset($month)){
+		
+	$rawmessage=$rawmessage . "<strong>Month:</strong> " . $month . "\r\n";}
+
+if (isset($pub)){
+		
+	$rawmessage=$rawmessage . "<strong>Publisher:</strong> " . $pub . "\r\n";}
+
+if (isset($place)){
+		
+	$rawmessage=$rawmessage . "<strong>Place:</strong> " . $place . "\r\n";}
+
+if (isset($id)){
+		
+	$rawmessage=$rawmessage . "<strong>ID:</strong> " . $id . "\r\n";}
+
+
+if (isset($issn)){
+		
+	$rawmessage=$rawmessage . "<strong>ISSN:</strong> " . $issn . "\r\n";}
+
+if (isset($isbn)){
+		
+	$rawmessage=$rawmessage . "<strong>ISBN:</strong> " . $isbn . "\r\n";}
+
+if (isset($type)){
+		
+	$rawmessage=$rawmessage . "<strong>Type:</strong> " . $type . "\r\n";}
+
+
+
+$rawmessage= $rawmessage . "Referrer: " .  $_SERVER["HTTP_REFERER"] . "\r\n" ;
+
+$rawmessage= $rawmessage . "Remote Address: " . $_SERVER['REMOTE_ADDR'] . "\r\n" ;
+$rawmessage= $rawmessage . "IP Forwarded From: " . $_SERVER['HTTP_X_FORWARDED_FOR'] . "\r\n" ;
+$rawmessage= $rawmessage . "Client IP: " . $_SERVER['HTTP_CLIENT_IP'] . "\r\n" ;
+
+//echo $rawmessage;
+
+	
+if ($title!==""){
+
+	echo "<strong>Title:</strong> " . $title . "<br>";}
+
+
+	if (isset($btitle)){
+		
+	echo "<strong>Book Title:</strong> " . $btitle . "<br>";}
+
+
+if (isset($jtitle)){
+		
+	echo "<strong>Journal Title:</strong> " . $jtitle . "<br>";}
+
+	
+if (isset($stitle)){
+		
+	echo "<strong>Abbreviated Journal Title:</strong> " . $stitle . "<br>";}
+
+	
+	
+if (isset($arttitle)){
+		
+	echo "<strong>Article Title:</strong> " . urldecode($arttitle) . "<br>";}
+
+
+if (isset($auinit)){
+		
+	echo "<strong>Author First Name:</strong> " . $auinit . "<br>";}
+
+	
+	
+if (isset($auth)){
+		
+	echo "<strong>Author Last Name:</strong> " . $auth . "<br>";}
+
+
+if (isset($date)){
+		
+	echo "<strong>Date:</strong> " . $date . "<br>";}
+
+if (isset($vol)){
+		
+	echo "<strong>Volume:</strong> " . $vol . "<br>";}
+
+if (isset($issue)){
+		
+	echo "<strong>Issue:</strong> " . $issue . "<br><br><br>";}
+
+	
+					
+					?>
+					
+				
+			<form method="post" action="problem_report_process.php">
+	 <label for="name"><strong>Name:</strong></label><br>
+  <input type="text" id="name" name="name"><br>
+
+	 <label for="email">Email:</label><br>
+  <input type="text" id="email" name="email"><br>
+	
+	
+	<label for="notes">Comments:</label><br>
+  <input type="textarea"  rows="4" cols="50" id="notes" name="notes"><br>
+	
+	 <input type="hidden" name="rawmessage" value="<?php echo $rawmessage; ?>"><br>
+	
+	
+	<input type="submit" value="Submit">
+					
+					</form>
